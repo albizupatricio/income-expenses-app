@@ -25,6 +25,7 @@ export class AuthService {
   ) {}
 
   private userSubscription: Subscription = new Subscription();
+  private usuario: User;
 
   initAuthListener() {
     this.afAuth.authState.subscribe((fbUser: firebase.User) => {
@@ -32,8 +33,10 @@ export class AuthService {
         this.userSubscription = this.afDB.doc(`${ fbUser.uid }/usuario`).valueChanges().subscribe((usuarioObj: any) => {
           const newUser = new User(usuarioObj);
           this.store.dispatch(new SetUserAction(newUser));
+          this.usuario = newUser;
         });
       } else {
+        this.usuario = null;
         this.userSubscription.unsubscribe();
       }
     });
@@ -99,5 +102,9 @@ export class AuthService {
         return fbUser != null;
       })
     );
+  }
+
+  getUsuario() {
+    return {...this.usuario};
   }
 }
