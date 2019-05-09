@@ -34,7 +34,7 @@ export class AuthService {
           this.store.dispatch(new SetUserAction(newUser));
         });
       } else {
-        this.userSubscription.unsubscribe();   
+        this.userSubscription.unsubscribe();
       }
     });
   }
