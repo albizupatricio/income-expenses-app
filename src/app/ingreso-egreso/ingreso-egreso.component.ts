@@ -35,7 +35,7 @@ export class IngresoEgresoComponent implements OnInit, OnDestroy {
       this.store.dispatch(new ActivarLoadingAction());
       const ingresoEgreso = new IngresoEgreso({...this.forma.value, tipo: this.tipo});
       this.ingresoEgresoService.crarIngresoEgreso(ingresoEgreso)
-      .then(()=>{
+      .then(() => {
         Swal.fire('Creado', ingresoEgreso.descripcion, 'success');
         this.forma.reset({
           monto: 0
