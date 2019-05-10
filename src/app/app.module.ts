@@ -10,6 +10,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+import { ChartsModule } from 'ng2-charts';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -51,7 +53,8 @@ import { OrdenIngresoEgresoPipe } from './ingreso-egreso/orden-ingreso-egreso.pi
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
-    })
+    }),
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
